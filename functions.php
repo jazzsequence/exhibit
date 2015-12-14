@@ -113,6 +113,7 @@ add_action( 'widgets_init', 'exhibit_widgets_init' );
 function exhibit_scripts() {
 	wp_enqueue_style( 'exhibit-style', get_stylesheet_uri() );
 
+	wp_register_script( 'director', 'https://rawgit.com/flatiron/director/master/build/director.min.js', array() );
 
 	$version = filemtime( get_template_directory() . '/assets/js/main.js' );
 
