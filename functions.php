@@ -134,3 +134,8 @@ function exhibit_override_routing() {
 	status_header( 200 );
 }
 add_action( 'template_redirect', 'exhibit_override_routing' );
+
+/**
+ * Load Theme Hook Alliance hooks.
+ */
+require get_template_directory() . '/inc/hooks.php';
