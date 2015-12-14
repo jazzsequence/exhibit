@@ -30,7 +30,7 @@
 	<script id="posts-tmpl" type="text/template">
 		<% _.each( data, function( post ) { %>
 			<div id="post-<%= post.id %>">
-				<h1><a class="js-single-post" data-name="<%= post.slug %>" href="http://wpapi.dev/news/<%= post.slug %>">
+				<h1><a class="js-single-post" data-name="<%= post.slug %>" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url( 'news' ) ), '<%= post.slug %>' ); ?>">
 					<%= post.title.rendered %>
 				</a></h1>
 				<%= post.excerpt.rendered %>
