@@ -38,11 +38,11 @@
 		<% }); %>
 		<div id="pagination">
 			<% if ( typeof previous !== 'undefined' ) { %>
-				<a class="page-prev" href="http://wpapi.dev/<%= previous %>"><< Previous</a>
+				<a class="page-prev" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url() ), '<%= previous %>' ); ?>"><?php echo sprintf( '&laquo; %s', esc_html__( 'Previous', 'exhibit' ) ); ?></a>
 			<% } %>
 
 			<% if ( typeof next !== 'undefined' ) { %>
-				<a class="page-next" href="http://wpapi.dev/<%= next %>">Next >></a>
+				<a class="page-next" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url() ), '<%= next %>' ); ?>"><?php echo sprintf( '%s &raquo;', esc_html__( 'Next', 'exhibit' ) ); ?></a>
 			<% } %>
 		</div>
 	</script>
@@ -56,7 +56,7 @@
 		<div id="post-<%= id %>">
 			<h1><%= title.rendered %></h1>
 
-			<p class="author-info">Written by: <img src="<%= _embedded.author[0].avatar_urls[24] %>"> <%= _embedded.author[0].name %></p>
+			<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= _embedded.author[0].avatar_urls[24] %>"> <%= _embedded.author[0].name %>' ); ?></p>
 
 			<%= content.rendered %>
 		</div>
