@@ -122,3 +122,15 @@ function exhibit_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'exhibit_scripts' );
+
+/**
+ * Prevent WP_Query from returning a 404.
+ */
+function exhibit_override_routing() {
+	global $wp_query;
+
+	$wp_query->is_404 = false;
+
+	status_header( 200 );
+}
+add_action( 'template_redirect', 'exhibit_override_routing' );
