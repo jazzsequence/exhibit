@@ -4,7 +4,7 @@
  *
  * The main theme file template.
  *
- * @package wcus
+ * @package exhibit
  */
 
 get_header();
