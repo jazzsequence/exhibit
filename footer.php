@@ -47,7 +47,8 @@
 	</script>
 
 	<script id="post-tmpl" type="text/template">
-		<% if ( typeof featured_image !== 'undefined' ) { %>
+		<%= console.log(featured_image) %>
+		<% if ( featured_image !== null ) { %>
 			<div class="featured" id="attachment-<%= featured_image.ID %>">
 				<img class="aligncenter" src="<%= featured_image.source %>">
 			</div>
