@@ -24,7 +24,6 @@
 	</div><!-- closes .container -->
 
 	<?php tha_body_bottom(); ?>
-	<?php wp_footer(); ?>
 	</body>
 
 	<script id="posts-tmpl" type="text/template">
