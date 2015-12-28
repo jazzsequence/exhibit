@@ -41,7 +41,7 @@
 			var output = data[0],
 				template = _.template( $( '#post-tmpl' ).html(), output );
 
-			$el.html( template );
+			$element.html( template );
 		});
 	};
 
@@ -69,7 +69,7 @@
 
     		template = _.template( $( '#posts-tmpl' ).html(), output );
 
-			$el.html( template );
+			$element.html( template );
 
 			/**
 			 * Click event handler for a single view of a listed Post.
