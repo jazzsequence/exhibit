@@ -47,15 +47,16 @@
 	</script>
 
 	<script id="post-tmpl" type="text/template">
-		<% if ( typeof _embedded["https://api.w.org/featuredmedia"] !== 'undefined' ) { %>
-			<div class="featured" id="attachment-<%= _embedded["https://api.w.org/featuredmedia"][0].id %>">
-				<img class="aligncenter" src="<%= _embedded["https://api.w.org/featuredmedia"][0].source_url %>">
+		<% if ( typeof featured_image !== 'undefined' ) { %>
+			<div class="featured" id="attachment-<%= featured_image.ID %>">
+				<img class="aligncenter" src="<%= featured_image.source %>">
 			</div>
 		<% } %>
 		<div id="post-<%= ID %>">
 			<h1><%= title %></h1>
-
-			<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= _embedded.author[0].avatar_urls[24] %>"> <%= _embedded.author[0].name %>' ); ?></p>
+			<%= console.log(author) %>
+			<%= console.log(author.avatar) %>
+			<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= author.avatar %>"> <%= author.name %>' ); ?></p>
 
 			<%= content %>
 		</div>
