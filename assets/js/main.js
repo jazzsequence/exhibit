@@ -58,7 +58,7 @@
 				currentPage = parseInt( page, 10 ),
 				maxPages = parseInt( jqxhr.getResponseHeader( 'X-WP-TotalPages' ), 10 ),
 				template;
-
+			// console.log(output);
 			if ( currentPage > 1 ) {
 				output.previous = currentPage - 1;
 			}
