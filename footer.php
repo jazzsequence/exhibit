@@ -20,10 +20,10 @@
 			<?php tha_footer_bottom(); ?>
 		</footer>
 		<?php tha_footer_after(); ?>
-		<?php wp_footer(); ?>
 	</div><!-- closes .container -->
 
 	<?php tha_body_bottom(); ?>
+	<?php wp_footer(); ?>
 	</body>
 
 	<script id="posts-tmpl" type="text/template">
