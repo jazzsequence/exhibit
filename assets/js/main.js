@@ -37,7 +37,7 @@
 	 * @param  {string} postName - The post slug.
 	 */
 	var viewPost = function( postName ) {
-		$.get( apiUrl + '/wp/v2/posts/?filter[name]=' + postName + '&_embed', function( data ) {
+		$.get( apiUrl + '/posts/?filter[name]=' + postName + '&_embed', function( data ) {
 			var output = data[0],
 				template = _.template( $( '#post-tmpl' ).html(), output );
 
@@ -53,7 +53,7 @@
 	var listPostswithPagination = function( page ) {
 		page = typeof page !== 'undefined' ? page : '1';
 
-		$.get( apiUrl + '/wp/v2/posts?page=' + page, function( data, textStatus, jqxhr ) {
+		$.get( apiUrl + '/posts?page=' + page, function( data, textStatus, jqxhr ) {
 			var output = { data: data },
 				currentPage = parseInt( page, 10 ),
 				maxPages = parseInt( jqxhr.getResponseHeader( 'X-WP-TotalPages' ), 10 ),
