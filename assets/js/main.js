@@ -2,11 +2,9 @@
  * Main.js
  */
 
-/**
- * Global Router
- */
+/** Global Router */
 ( function( $, _, undefined ) {
-	var apiUrl = 'http://exhibit.dev', // TODO: this needs to not be hard-coded
+	var apiUrl = 'http://exhibit.dev/wp-json', // TODO: this needs to not be hard-coded
 		$element = $( '#js-data' );
 
 	/**
