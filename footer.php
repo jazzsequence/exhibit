@@ -30,9 +30,9 @@
 		<% _.each( data, function( post ) { %>
 			<div id="post-<%= post.ID %>">
 				<h1><a class="js-single-post" data-name="<%= post.slug %>" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url( 'news' ) ), '<%= post.slug %>' ); ?>">
-					<%= post.title.rendered %>
+					<%= post.title %>
 				</a></h1>
-				<%= post.excerpt.rendered %>
+				<%= post.excerpt %>
 			</div>
 		<% }); %>
 		<div id="pagination">
@@ -52,12 +52,12 @@
 				<img class="aligncenter" src="<%= _embedded["https://api.w.org/featuredmedia"][0].source_url %>">
 			</div>
 		<% } %>
-			<h1><%= title.rendered %></h1>
 		<div id="post-<%= ID %>">
+			<h1><%= title %></h1>
 
 			<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= _embedded.author[0].avatar_urls[24] %>"> <%= _embedded.author[0].name %>' ); ?></p>
 
-			<%= content.rendered %>
+			<%= content %>
 		</div>
 	</script>
 </html>
