@@ -57,7 +57,9 @@
 			<h1><%= title %></h1>
 			<%= console.log(author) %>
 			<%= console.log(author.avatar) %>
-			<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= author.avatar %>"> <%= author.name %>' ); ?></p>
+			<% if ( author ) { %>
+				<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= author.avatar %>"> <%= author.name %>' ); ?></p>
+			<% } %>
 
 			<%= content %>
 		</div>
