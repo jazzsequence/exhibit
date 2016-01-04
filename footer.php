@@ -58,7 +58,9 @@
 			<%= console.log(author) %>
 			<%= console.log(author.avatar) %>
 			<% if ( author ) { %>
-				<p class="author-info"><?php echo sprintf( esc_html__( 'Written by: %s', 'exhibit' ), '<img src="<%= author.avatar %>"> <%= author.name %>' ); ?></p>
+				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( new Date(date) ) %>', '<%= author.name %>' ); ?></p>
+			<% } else { %>
+				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( new Date(date) ) %>' ); ?></p>
 			<% } %>
 
 			<%= content %>
