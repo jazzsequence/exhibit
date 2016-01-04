@@ -111,11 +111,22 @@ add_action( 'widgets_init', 'exhibit_widgets_init' );
  * Enqueue scripts and styles.
  */
 function exhibit_scripts() {
+	$version = filemtime( get_template_directory() . '/assets/js/main.js' );
+
+	// Load the main stylesheet.
 	wp_enqueue_style( 'exhibit-style', get_stylesheet_uri() );
 
-	wp_register_script( 'director', 'https://rawgit.com/flatiron/director/master/build/director.min.js', array() );
+	// This loads jquery (for Bootstrap, among other things).
+	wp_enqueue_script( 'jquery' );
+	// Load Boostrap.
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array( 'jquery' ), '3.0.0', true );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', false, '3.0.0' );
+	// Loads Modernizr for BPH5.
+	wp_enqueue_script( 'modernizr',get_template_directory_uri() . '/assets/js/modernizr-2.5.3.min.js',false,'2.5.3' );
+	// Load FontAwesome.
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', false, $version );
 
-	$version = filemtime( get_template_directory() . '/assets/js/main.js' );
+	wp_register_script( 'director', 'https://rawgit.com/flatiron/director/master/build/director.min.js', array() );
 
 	wp_enqueue_script( 'main', esc_url( get_template_directory_uri() . '/assets/js/main.js' ), array( 'jquery', 'underscore', 'director' ), $version, true );
 
