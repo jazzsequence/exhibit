@@ -62,8 +62,14 @@
 			<h1><%= title %></h1>
 			<%= console.log(author) %>
 			<%= console.log(author.avatar) %>
-			<% if ( author ) { %>
-				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= author.name %>' ); ?></p>
+			<% if ( author ) {
+				var authorURL = null;
+				var authorDisplay = author.name;
+				if ( author.URL ) {
+					authorURL = author.URL;
+					authorDisplay = '<a href="' + author.URL + '">' + author.name + '</a>';
+				} %>
+				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?></p>
 			<% } else { %>
 				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
 			<% } %>
