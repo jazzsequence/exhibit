@@ -60,7 +60,10 @@
 			<% if ( author ) { %>
 				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( new Date(date) ) %>', '<%= author.name %>' ); ?></p>
 			<% } else { %>
-				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( new Date(date) ) %>' ); ?></p>
+				<%
+				var postDate = exhibitFormatDate(date);
+				%>
+				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
 			<% } %>
 
 			<%= content %>
