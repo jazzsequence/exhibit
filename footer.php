@@ -60,8 +60,10 @@
 		<% } %>
 		<div id="post-<%= ID %>">
 			<h1><%= title %></h1>
-			<%= console.log(author) %>
-			<%= console.log(author.avatar) %>
+			<% _.each( terms, function( term ) {
+			//	console.log(term);
+			}); %>
+			<% var category_list = exhibitGetCategories(terms); %>
 			<% if ( author ) {
 				var authorURL = null;
 				var authorDisplay = author.name;
@@ -72,7 +74,7 @@
 				<p class="postmetadata">
 					<div class="media">
 						<div class="media-body">
-							<?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?>
+							<?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= category_list %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?>
 						</div>
 						<div class="media-right thumbnail pull-right">
 							<img src="<%= author.avatar %>" alt="<?php echo sprintf( __( 'Avatar for %s', 'exhibit' ), '<% author.name %>' ); ?>" height="50" width="50" />
