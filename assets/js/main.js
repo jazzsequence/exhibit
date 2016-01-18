@@ -147,3 +147,21 @@ function exhibitFormatDate( date ) {
 
 	return output;
 }
+/**
+ * Function to return post terms and links.
+ */
+function exhibitGetCategories( terms ) {
+	var term_list = '';
+	var index, count;
+	var categories = terms.category;
+	for ( index = 0, count = exhibitObjectLength(categories); index < count; ) {
+		term_list = term_list + '<a href="' + categories[index].link + '">' + categories[index].name + '</a>';
+		++index;
+
+		if ( index !== count ) {
+			term_list = term_list + ', ';
+		}
+	};
+
+	return term_list;
+}
