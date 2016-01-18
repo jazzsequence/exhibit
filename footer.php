@@ -28,6 +28,11 @@
 
 	<script id="posts-tmpl" type="text/template">
 		<% _.each( data, function( post ) { %>
+			<% if ( post.featured_image !== null ) { %>
+				<div class="featured" id="attachment-<%= post.featured_image.ID %>">
+					<img class="alignleft" src="<%= post.featured_image.attachment_meta.sizes.thumbnail.url %>">
+				</div>
+			<% } %>
 			<div id="post-<%= post.ID %>">
 				<h1><a class="js-single-post" data-name="<%= post.slug %>" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url( 'news' ) ), '<%= post.slug %>' ); ?>">
 					<%= post.title %>
@@ -48,7 +53,6 @@
 
 	<script id="post-tmpl" type="text/template">
 		<% var postDate = exhibitFormatDate(date) %>
-		<%= console.log(featured_image) %>
 		<% if ( featured_image !== null ) { %>
 			<div class="featured" id="attachment-<%= featured_image.ID %>">
 				<img class="aligncenter" src="<%= featured_image.source %>">
