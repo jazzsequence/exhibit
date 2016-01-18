@@ -47,6 +47,7 @@
 	</script>
 
 	<script id="post-tmpl" type="text/template">
+		<% var postDate = exhibitFormatDate(date) %>
 		<%= console.log(featured_image) %>
 		<% if ( featured_image !== null ) { %>
 			<div class="featured" id="attachment-<%= featured_image.ID %>">
@@ -58,11 +59,8 @@
 			<%= console.log(author) %>
 			<%= console.log(author.avatar) %>
 			<% if ( author ) { %>
-				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( new Date(date) ) %>', '<%= author.name %>' ); ?></p>
+				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= author.name %>' ); ?></p>
 			<% } else { %>
-				<%
-				var postDate = exhibitFormatDate(date);
-				%>
 				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
 			<% } %>
 
