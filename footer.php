@@ -69,7 +69,16 @@
 					authorURL = author.URL;
 					authorDisplay = '<a href="' + author.URL + '">' + author.name + '</a>';
 				} %>
-				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?></p>
+				<p class="postmetadata">
+					<div class="media">
+						<div class="media-body">
+							<?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?>
+						</div>
+						<div class="media-right thumbnail pull-right">
+							<img src="<%= author.avatar %>" alt="<?php echo sprintf( __( 'Avatar for %s', 'exhibit' ), '<% author.name %>' ); ?>" height="50" width="50" />
+						</div>
+					</div>
+				</p>
 			<% } else { %>
 				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
 			<% } %>
