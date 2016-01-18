@@ -115,7 +115,6 @@
 /**
  * Date Formatting function.
  */
-
 function exhibitFormatDate( date ) {
 	var theDate = new Date(date);
 
@@ -147,6 +146,7 @@ function exhibitFormatDate( date ) {
 
 	return output;
 }
+
 /**
  * Function to return post terms and links.
  */
@@ -164,4 +164,21 @@ function exhibitGetCategories( terms ) {
 	};
 
 	return term_list;
+}
+
+/**
+ * Function to get the length (count) of an object
+ * @param  {object} obj The object to count.
+ * @return {int}        The number of elements in the object.
+ * @link                http://stackoverflow.com/a/2693037
+ */
+function exhibitObjectLength( obj ) {
+	var result = 0;
+	for(var prop in obj) {
+		if (obj.hasOwnProperty(prop)) {
+			// or Object.prototype.hasOwnProperty.call(obj, prop)
+			result++;
+		}
+	}
+	return result;
 }
