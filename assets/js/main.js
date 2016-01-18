@@ -114,6 +114,7 @@
 
 /**
  * Date Formatting function.
+ * @since 0.2.1
  */
 function exhibitFormatDate( date ) {
 	var theDate = new Date(date);
@@ -149,6 +150,7 @@ function exhibitFormatDate( date ) {
 
 /**
  * Function to return post terms and links.
+ * @since 0.2.1
  */
 function exhibitGetCategories( terms ) {
 	var term_list = '';
@@ -171,6 +173,7 @@ function exhibitGetCategories( terms ) {
  * @param  {object} obj The object to count.
  * @return {int}        The number of elements in the object.
  * @link                http://stackoverflow.com/a/2693037
+ * @since  0.2.1
  */
 function exhibitObjectLength( obj ) {
 	var result = 0;
