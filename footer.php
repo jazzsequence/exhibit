@@ -28,17 +28,25 @@
 
 	<script id="posts-tmpl" type="text/template">
 		<% _.each( data, function( post ) { %>
-			<% if ( post.featured_image !== null ) { %>
-				<div class="featured" id="attachment-<%= post.featured_image.ID %>">
-					<img class="alignleft" src="<%= post.featured_image.attachment_meta.sizes.thumbnail.url %>">
-				</div>
-			<% } %>
-			<div id="post-<%= post.ID %>">
-				<h1><a class="js-single-post" data-name="<%= post.slug %>" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url( 'news' ) ), '<%= post.slug %>' ); ?>">
-					<%= post.title %>
-				</a></h1>
-				<%= post.excerpt %>
-			</div>
+			<article <%= postClass(post) %> id="post-<%= post.ID %>">
+				<?php tha_entry_before(); ?>
+					<section class="entry media">
+						<?php tha_entry_top(); ?>
+						<% if ( post.featured_image !== null ) { %>
+							<div class="featured pull-left" id="attachment-<%= post.featured_image.ID %>">
+								<img class="alignleft" src="<%= post.featured_image.attachment_meta.sizes.thumbnail.url %>">
+							</div>
+						<% } %>
+						<div class="media-body">
+							<h1><a class="js-single-post" data-name="<%= post.slug %>" href="<?php echo sprintf( '%1$s/%2$s', esc_url( home_url( 'news' ) ), '<%= post.slug %>' ); ?>">
+								<%= post.title %>
+							</a></h1>
+							<%= post.excerpt %>
+						</div>
+						<?php tha_entry_bottom(); ?>
+					</section>
+				<?php tha_entry_after(); ?>
+			</article>
 		<% }); %>
 		<div id="pagination">
 			<% if ( typeof previous !== 'undefined' ) { %>
@@ -53,39 +61,44 @@
 
 	<script id="post-tmpl" type="text/template">
 		<% var postDate = exhibitFormatDate(date) %>
-		<% if ( featured_image !== null ) { %>
-			<div class="featured" id="attachment-<%= featured_image.ID %>">
-				<img class="aligncenter" src="<%= featured_image.source %>">
-			</div>
-		<% } %>
-		<div id="post-<%= ID %>">
-			<h1><%= title %></h1>
-			<% _.each( terms, function( term ) {
-			//	console.log(term);
-			}); %>
-			<% var category_list = exhibitGetCategories(terms); %>
-			<% if ( author ) {
-				var authorURL = null;
-				var authorDisplay = author.name;
-				if ( author.URL ) {
-					authorURL = author.URL;
-					authorDisplay = '<a href="' + author.URL + '">' + author.name + '</a>';
-				} %>
-				<p class="postmetadata">
-					<div class="media">
-						<div class="media-body">
-							<?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= category_list %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?>
-						</div>
-						<div class="media-right thumbnail pull-right">
-							<img src="<%= author.avatar %>" alt="<?php echo sprintf( __( 'Avatar for %s', 'exhibit' ), '<% author.name %>' ); ?>" height="50" width="50" />
-						</div>
-					</div>
-				</p>
-			<% } else { %>
-				<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
+		<article <?php post_class(); ?> id="post-<%= ID %>">
+			<?php tha_entry_before(); ?>
+			<section class="entry">
+				<?php tha_entry_top(); ?>
+			<% if ( featured_image !== null ) { %>
+				<div class="featured" id="attachment-<%= featured_image.ID %>">
+					<img class="aligncenter" src="<%= featured_image.source %>">
+				</div>
 			<% } %>
+			<div id="post-<%= ID %>">
+				<h1><%= title %></h1>
+				<% _.each( terms, function( term ) {
+				//	console.log(term);
+				}); %>
+				<% var category_list = exhibitGetCategories(terms); %>
+				<% if ( author ) {
+					var authorURL = null;
+					var authorDisplay = author.name;
+					if ( author.URL ) {
+						authorURL = author.URL;
+						authorDisplay = '<a href="' + author.URL + '">' + author.name + '</a>';
+					} %>
+					<p class="postmetadata">
+						<div class="media">
+							<div class="media-body">
+								<?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s by %3$s', 'exhibit' ), '<%= category_list %>', '<% print( postDate ) %>', '<%= authorDisplay %>' ); ?>
+							</div>
+							<div class="media-right thumbnail pull-right">
+								<img src="<%= author.avatar %>" alt="<?php echo sprintf( __( 'Avatar for %s', 'exhibit' ), '<% author.name %>' ); ?>" height="50" width="50" />
+							</div>
+						</div>
+					</p>
+				<% } else { %>
+					<p class="postmetadata"><?php echo sprintf( esc_html__( 'Posted in %1$s on %2$s', 'exhibit' ), '<%= terms.category[0].name %>', '<% print( postDate ) %>' ); ?></p>
+				<% } %>
 
-			<%= content %>
-		</div>
+				<%= content %>
+			</div>
+		</article>
 	</script>
 </html>
