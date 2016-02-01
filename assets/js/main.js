@@ -185,3 +185,27 @@ function exhibitObjectLength( obj ) {
 	}
 	return result;
 }
+
+/**
+ * Attempts to return the classes for the post the same way post_class() does in WordPress core.
+ * @param  {object} post The post object.
+ * @return {string}      The classes for the post wrapped in class="".
+ * @since  0.2.2
+ */
+function postClass( post ) {
+	var classes = '';
+	console.log (post.type);
+	console.log(post.status);
+	console.log(post.format);
+	console.log(post.ID);
+	console.log(post.sticky);
+	classes = post.type + ' type-' + post.type + ' status-' + post.status + ' format-' + post.format + ' hentry post-' + post.ID;
+
+	if ( true == post.sticky ) {
+		classes = classes + ' sticky';
+	}
+
+	classes = 'class="' + classes + '"';
+
+	return classes;
+}
